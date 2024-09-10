@@ -1,0 +1,23 @@
+<div class="selected guild" (click)="expanded = !expanded">
+  <ng-container *ngIf="selectedGuild">
+    <div class="avatar">
+      <img alt="guild avatar" [src]="discordService.getGuildIcon(selectedGuild.id, selectedGuild.icon)"/>
+    </div>
+    <div class="name">{{selectedGuild.name}}</div>
+  </ng-container>
+</div>
+<div class="select" *ngIf="guilds">
+  <ng-container *ngFor="let guild of guilds">
+    <ng-container *ngIf="guild !== selectedGuild && guild.config">
+      <div class="item guild" (click)="selected.next(guild)">
+        <div class="avatar">
+          <img alt="guild avatar" [src]="discordService.getGuildIcon(guild.id, guild.icon)"/>
+        </div>
+        <div class="name">{{guild.name}}</div>
+      </div>
+    </ng-container>
+  </ng-container>
+  <div class="empty" *ngIf="validGuilds.length === 0">
+    Nothing in here...
+  </div>
+</div>

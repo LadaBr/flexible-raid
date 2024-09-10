@@ -1,0 +1,19 @@
+{
+  "mongodb": {
+    "connectionString": "mongodb://127.0.0.1:27017/flexible-raid"
+  },
+  "discord": {
+    "version": 10,
+    "client_id": "",
+    "client_secret": "",
+    "scope": "identify guilds guilds.members.read",
+    "bot": {
+      "token": "",
+      "id": ""
+    }
+  },
+  "raid-helper": {
+    "token": "",
+    "id": ""
+  }
+}

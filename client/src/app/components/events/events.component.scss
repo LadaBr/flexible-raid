@@ -1,0 +1,61 @@
+.setup-roles {
+  display: flex;
+  align-items: center;
+  flex-flow: row-reverse;
+  gap: 4px;
+  color: #aeaeae;
+
+  .selected {
+    img {
+      border: 1px solid #589100;
+      opacity: 1;
+      border-radius: 50%;
+    }
+  }
+}
+
+.setup {
+  display: flex;
+}
+
+.events {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex-flow: column;
+}
+
+.event {
+  font-size: 12px;
+  display: flex;
+  flex-flow: column;
+  gap: 4px;
+  .detail {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.name {
+  font-size: 14px;
+}
+
+.role {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  img {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+
+.valid-events {
+  display: flex;
+  flex-flow: column;
+  padding: 4px 8px;
+  gap: 8px;
+  border-top: 1px solid #424242;
+}

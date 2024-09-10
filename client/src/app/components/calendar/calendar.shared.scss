@@ -1,0 +1,21 @@
+
+app-calendar-item, .hour-name, .day-name, .disabled-hour {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-left: 1px;
+  margin-right: 1px;
+  background-clip: content-box;
+}
+
+
+.day-name, .hour-name {
+  font-size: 14px;
+}
+
+app-calendar-item, .day-name, .disabled-hour {
+  width: 42px;
+}
+
+app-calendar-item, .hour-name, .disabled-hour {
+  height: 42px;
+}

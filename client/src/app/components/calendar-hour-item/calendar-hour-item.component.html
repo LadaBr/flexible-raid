@@ -1,0 +1,6 @@
+<div class="hour-names">
+  <div class="empty"></div>
+  <ng-container *ngFor="let hour of allowedHours">
+    <div class="hour-name" [ngClass]="{current: (calendarService.currentHourWhole$ | async) === hour}">{{hour}}:00</div>
+  </ng-container>
+</div>

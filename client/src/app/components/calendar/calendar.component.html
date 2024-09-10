@@ -1,0 +1,39 @@
+<div class="container">
+  <app-calendar-hour-item [config]="config"></app-calendar-hour-item>
+  <div class="sub-container">
+    <app-calendar-day-item [config]="config" [dayNames]="dayNames"></app-calendar-day-item>
+    <div class="calendar">
+      <div class="day" *ngFor="let day of calendarService.calendarDaysHoursWithEvents$ | async; index as dayIndex"
+           [ngClass]="{'locked': config.lockedDays[dayIndex]}">
+        <ng-container *ngFor="let hour of day; index as hourIndex">
+          <ng-container class="hour-container" *ngIf="isAllowed(config.disabledHours, hourIndex)">
+            <ng-container *ngIf="true">
+              <app-calendar-item *ngIf="hour.enabled"
+                                 [day]="dayIndex"
+                                 [hour]="hourIndex"
+                                 [user]="user"
+                                 [config]="config"
+                                 [events]="hour.events"
+                                 [locked]="config.lockedDays[dayIndex]"
+                                 [showRole]="user
+                               ? !isSameRole(attendances?.get(dayIndex)?.get(hourIndex - 1)?.get(user.id), attendances?.get(dayIndex)?.get(hourIndex)?.get(user.id)) ||
+                                !attendances?.get(dayIndex)?.get(hourIndex - 1)?.has(user.id)
+                               : true"
+                                 [ngClass]="{
+                                 'has-events': hour.events.length > 0,
+                                  'previous-me': user ? isSameRole(attendances?.get(dayIndex)?.get(hourIndex - 1)?.get(user.id), attendances?.get(dayIndex)?.get(hourIndex)?.get(user.id)) : false,
+                                  'me': user ? attendances?.get(dayIndex)?.get(hourIndex)?.has(user.id) : false,
+                                  'next-me': user ? attendances?.get(dayIndex)?.get(hourIndex + 1)?.has(user.id) : false
+                               }"
+                                 (click)="!config.lockedDays[dayIndex] && selectedHour.next([dayIndex, hourIndex])"
+                                 [attendance]="attendances?.get(dayIndex)?.get(hourIndex)"
+              ></app-calendar-item>
+            </ng-container>
+
+            <div *ngIf="!hour.enabled" class="disabled-hour"></div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

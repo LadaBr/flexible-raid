@@ -1,0 +1,7 @@
+<div class="container">
+  <img class="role" [ngClass]="{selected: selectedRole === role}"
+       [alt]="role"
+       *ngFor="let role of roles"
+       (click)="selectRole.next(role)"
+       [src]="'assets/images/roles/' + role +'.png'">
+</div>

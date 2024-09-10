@@ -1,0 +1,98 @@
+:host {
+  background-color: #2f3136;
+}
+
+.bar {
+  height: 52px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-shadow: rgba(4, 4, 5, 0.2) 0px 1px 0px 0px, rgba(6, 6, 7, 0.05) 0px 1.5px 0px 0px, rgba(4, 4, 5, 0.05) 0px 2px 0px 0px;
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+
+.login, .logout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  &:hover {
+    * {
+      color: #d7dade;
+    }
+  }
+
+  fa-icon {
+    color: #b9bbbe;
+    font-size: 24px;
+  }
+}
+
+.user {
+  display: flex;
+  gap: 16px;
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    flex-flow: row-reverse;
+    .username {
+      line-height: 18px;
+      font-weight: 600;
+      font-size: 14px;
+      color: white;
+      display: flex;
+      gap: 4px;
+
+      .id {
+        color: rgb(185, 187, 190);
+        font-size: 12px;
+        font-weight: 400;
+      }
+    }
+    .avatar {
+      height: 32px;
+      width: 32px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+.guild-container {
+
+}
+
+.add {
+  font-size: 11px;
+  color: rgb(185, 187, 190);
+  a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: inherit;
+    &:hover {
+      color: white;
+    }
+  }
+}
+

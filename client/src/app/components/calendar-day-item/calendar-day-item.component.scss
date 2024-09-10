@@ -1,0 +1,14 @@
+
+.day-names {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.day-name {
+  text-align: center;
+
+  &.current {
+    color: #dec200;
+  }
+}

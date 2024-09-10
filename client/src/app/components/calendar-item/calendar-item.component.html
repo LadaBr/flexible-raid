@@ -1,0 +1,22 @@
+
+<ng-container>
+  <div class="tooltip" *ngIf="attendance?.size">
+    <div class="roles">
+      <ng-container *ngFor="let role of roles | keyvalue">
+        <div class="role" *ngIf="role.value">
+          <img [alt]="role.key" [src]="'assets/images/roles/' + role.key +'.png'" [ngClass]="{me: userInfo?.role === role.key}">
+          <span class="count">{{role.value.length}}</span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="info" *ngIf="attendance?.size">
+    {{attendance?.size}}
+  </div>
+  <div class="selected-role" *ngIf="userInfo && showRole">
+    <img class="class" [src]="classImage"/>
+    <img class="role" [alt]="userInfo.role" [src]="'assets/images/roles/' + userInfo.role +'.png'">
+    <img class="spec" [src]="specImage"/>
+  </div>
+</ng-container>

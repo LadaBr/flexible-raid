@@ -1,0 +1,73 @@
+<ng-container *ngIf="calendarService.classColors$ | async as classColors">
+  <div class="event-day" [ngClass]="{locked: guild.config ? guild.config.lockedDays[validEvent.day] : false}">
+    <ng-container *ngIf="calendarService.hasPermission$ | async">
+      <fa-icon class="add" *ngIf="guild.config ? !guild.config.lockedDays[validEvent.day] : false"
+               [icon]="faPlus"
+               (click)="calendarService.createEvent(validEvent)"></fa-icon>
+    </ng-container>
+
+    <fa-icon class="lock" *ngIf="guild.config ? guild.config.lockedDays[validEvent.day] : false"
+             [icon]="faLock"></fa-icon>
+    <span class="day"
+          [ngClass]="{current: calendarService.currentDay === validEvent.day}">{{calendarService.dayNames[validEvent.day]}}</span>
+    <span class="date"
+          [ngClass]="{current: calendarService.currentDay === validEvent.day && (calendarService.currentHour$ | async) === validEvent.hour}">
+              {{calendarService.eventTimeToDate(validEvent.day, validEvent.hour) | date: 'dd.M. HH:mm'}}
+      <ng-container *ngIf="calendarService.getLastChainedEvent(validEvent) as lastEvent">
+                - {{calendarService.eventTimeToDate(lastEvent.day, lastEvent.hour + 1)  | date: 'HH:mm'}}
+              </ng-container>
+            </span>
+    <div class="class-info" *ngIf="validEvent.me">
+      <img class="class" [src]="getClassImage(validEvent.me.classSlug)"/>
+      <img class="spec" [src]="getSpecImage(validEvent.me.classSlug, validEvent.me.specSlug)"/>
+    </div>
+  </div>
+
+  <div class="setup" *ngIf="validEvent.roles">
+    <div class="setup-roles">
+      <ng-container *ngFor="let role of validEvent.roles | keyvalue">
+        <div class="role" *ngIf="role.value.length > 0" [ngClass]="{selected: validEvent.me?.role === role.key}">
+          <img [alt]="role.key" [src]="'assets/images/roles/' + role.key +'.png'"> {{role.value.length}}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="existing-events">
+    <div class="container">
+      <div class="existing-event" *ngFor="let existingEvent of validEvent.existingEvents">
+        <div class="line"></div>
+        <a class="leader"
+           href="https://discord.com/channels/{{guild.id}}/{{existingEvent.channelid}}/{{existingEvent.raidid}}"
+           target="_blank" [style.color]="'rgb('+existingEvent.color+')'">
+          {{existingEvent.leadername}}
+        </a>
+        <div class="setup" *ngIf="mapExistingEventRoles(existingEvent) as roles">
+          <div class="setup-roles">
+            <div class="role" *ngFor="let role of roles | keyvalue"
+                 [ngClass]="{selected: validEvent.me?.role === role.key}">
+              <img [alt]="role.key" [src]="'assets/images/roles/' + role.key +'.png'"> {{role.value.length}}
+            </div>
+          </div>
+          <div class="tooltip">
+            <div class="roster">
+              <div class="roster-role" *ngFor="let item of roles | keyvalue">
+                <div class="role">
+                  <img [alt]="item.key" [src]="'assets/images/roles/' + item.key +'.png'"> {{item.value.length}}
+                </div>
+                <div class="role-container">
+                  <div class="roster-role-player" *ngFor="let player of item.value">
+                    <img class="attendance" *ngIf="player.attendanceState" [src]="getAttendanceImage(player.attendanceState)"/>
+                    <img class="class" *ngIf="player.classSlug" [src]="getClassImage(player.classSlug)"/>
+                    <img class="spec" *ngIf="player.classSlug && player.specSlug"
+                         [src]="getSpecImage(player.classSlug, player.specSlug)"/>
+                    <div class="name" [style.color]="classColors[player.class]">{{player.name}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

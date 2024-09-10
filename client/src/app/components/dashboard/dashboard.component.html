@@ -1,0 +1,27 @@
+<ng-container *ngIf="calendarService.selectedCalendarGuild$ | async as guild">
+  <div class="container" *ngIf="true">
+    <div class="top">
+      <div class="selectors">
+        <app-spec-selector (selectClass)="calendarService.selectClass($event)"
+                           (selectSpec)="calendarService.selectSpec($event)"
+                           [selectedClass]="calendarService.selectedClass$ | async"
+                           [selectedSpec]="calendarService.selectedSpec$ | async"
+        ></app-spec-selector>
+        <app-role-selector [selectedRole]="calendarService.selectedRole$ | async" (selectRole)="calendarService.selectRole($event)"></app-role-selector>
+      </div>
+    </div>
+    <div class="center">
+      <app-calendar *ngIf="guild.config"
+                    [config]="guild.config"
+                    [dayNames]="calendarService.dayNames"
+                    [currentDay]="calendarService.currentDay"
+                    (selectedHour)="calendarService.toggleHour($event)"
+                    [user]="user.user$ | async"
+                    [attendances]="calendarService.attendances$ | async"></app-calendar>
+      <ng-container *ngIf="calendarService.possibleEvents$ | async as possibleEvents">
+        <app-events [possibleEvents]="possibleEvents" [guild]="guild"></app-events>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>
+

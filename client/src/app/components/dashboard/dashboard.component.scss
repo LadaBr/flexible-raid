@@ -1,0 +1,51 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-flow: column;
+  padding: 16px;
+  gap: 8px;
+  height: 100%;
+}
+
+.selectors {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 8px;
+  background: #2f3136;
+  border-radius: 8px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+app-calendar {
+  margin-left: -58px;
+}
+
+
+app-events {
+  flex: 1;
+  padding: 8px 16px;
+  background: #2f3136;
+  border-radius: 8px;
+  min-width: 260px;
+}
+
+.center {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+

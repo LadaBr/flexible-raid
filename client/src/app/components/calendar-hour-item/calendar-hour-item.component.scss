@@ -1,0 +1,24 @@
+
+.hour-names {
+  display: flex;
+  flex-flow: column;
+  padding-right: 8px;
+}
+
+.hour-name {
+  width: 48px;
+  justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  &.current {
+    color: #dec200;
+  }
+}
+.empty {
+  height: 32px;
+}
+
+
+.has-events {
+  background-color: red;
+}

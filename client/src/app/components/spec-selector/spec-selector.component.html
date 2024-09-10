@@ -1,0 +1,42 @@
+<div class="info">
+  <div class="placeholder"></div>
+  <div class="class" tabindex="-1" [ngClass]="{expanded}">
+    <div class="button" [ngClass]="{empty: !selectedClass}" (click)="expanded = !expanded">
+      <span *ngIf="!selectedClass">?</span>
+      <div class="image-container" *ngIf="selectedClass">
+        <img [alt]="selectedClass.name" [src]="getClassImage(selectedClass.slug)"/>
+        <div class="shadow"></div>
+      </div>
+    </div>
+    <div class="spec-button">
+      <span *ngIf="!selectedSpec">?</span>
+      <div class="image-container" *ngIf="selectedSpec && selectedClass">
+        <img [alt]="selectedSpec.name" [src]="getClassSpecImage(selectedClass.slug, selectedSpec.slug)"/>
+      </div>
+    </div>
+    <div *ngIf="classes$ | async as classes" class="classes">
+      <div class="class"
+           [ngClass]="{selected: _class.name === selectedClass?.name}"
+           *ngFor="let _class of classes"
+           (click)="selectClass.next(_class)"
+           [class]="_class.slug">
+        <div class="image-container">
+          <img [alt]="_class.name" [src]="getClassImage(_class.slug)"/>
+          <div class="shadow"></div>
+        </div>
+        <div class="specs">
+          <div class="spec" [ngClass]="{selected: spec.name === selectedSpec?.name && selectedSpec && isValidSpec(_class, selectedSpec)}" *ngFor="let spec of _class.specs" (click)="selectSpec.next(spec)">
+            <div class="image-container">
+              <img [alt]="spec.name" [src]="getClassSpecImage(_class.slug, spec.slug)"/>
+              <div class="shadow"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>

@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Death Knight",
+    "specs": [
+      { "name":  "Blood", "id": 1},
+      { "name":  "Frost", "id": 2},
+      { "name":  "Unholy", "id": 3}
+    ],
+    "color": "#C41E3A"
+  },
+  {
+    "name": "Druid",
+    "specs": [
+      { "name":  "Balance", "id": 4},
+      { "name":  "Feral Combat", "id": 5},
+      { "name":  "Restoration", "id": 6}
+    ],
+    "color": "#FF7C0A"
+  },
+  {
+    "name": "Hunter",
+    "specs": [
+      { "name":  "Beast Mastery", "id": 7},
+      { "name":  "Marksmanship", "id": 8},
+      { "name":  "Survival", "id": 9}
+    ],
+    "color": "#AAD372"
+  },
+  {
+    "name": "Mage",
+    "specs": [
+      { "name":  "Arcane", "id": 10},
+      { "name":  "Fire", "id": 11},
+      { "name":  "Frost", "id": 12}
+    ],
+    "color": "#3FC7EB"
+  },
+  {
+    "name": "Paladin",
+    "specs": [
+      { "name":  "Holy", "id": 13},
+      { "name":  "Protection", "id": 14},
+      { "name":  "Retribution", "id": 15}
+    ],
+    "color": "#F48CBA"
+  },
+  {
+    "name": "Priest",
+    "specs": [
+      { "name":  "Discipline", "id": 16},
+      { "name":  "Holy", "id": 17},
+      { "name":  "Shadow", "id": 18}
+    ],
+    "color": "#FFFFFF"
+  },
+  {
+    "name": "Rogue",
+    "specs": [
+      { "name":  "Assassination", "id": 19},
+      { "name":  "Combat", "id": 20},
+      { "name":  "Subtlety", "id": 21}
+    ],
+    "color": "#FFF468"
+  },
+  {
+    "name": "Shaman",
+    "specs": [
+      { "name":  "Elemental", "id": 22},
+      { "name":  "Enhancement", "id": 23},
+      { "name":  "Restoration", "id": 24}
+    ],
+    "color": "#0070DD"
+  },
+  {
+    "name": "Warlock",
+    "specs": [
+      { "name":  "Affliction", "id": 25},
+      { "name":  "Demonology", "id": 26},
+      { "name":  "Destruction", "id": 27}
+    ],
+    "color": "#8788EE"
+  },
+  {
+    "name": "Warrior",
+    "specs": [
+      { "name":  "Arms", "id": 28},
+      { "name":  "Fury", "id": 29},
+      { "name":  "Protection", "id": 30}
+    ],
+    "color": "#C69B6D"
+  }
+]

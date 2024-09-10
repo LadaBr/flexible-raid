@@ -1,0 +1,88 @@
+:host {
+  display: flex;
+}
+.day {
+  &.locked {
+    app-calendar-item {
+      cursor: auto;
+      background-color: #222;
+      //background-clip: border-box;
+    }
+    .disabled-hour {
+    }
+  }
+}
+
+.disabled-hour {
+  background-color: #222;
+  border: 1px solid transparent;
+}
+
+
+app-calendar-item {
+  border-radius: 2px;
+  display: flex;
+  background-color: #2f3136;
+  cursor: pointer;
+  color: #7e7e7e;
+  border: 1px solid transparent;
+
+  &.has-events {
+    background-color: #b38c00 !important;
+    color: white !important;
+  }
+
+
+  &.me {
+    border-style: solid;
+    border-width: 0;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-color: #de9c0066;
+    background-color: #2b2c31;
+    background-clip: border-box;
+    color: #ababab;
+  }
+  &.next-me {
+    border-bottom-color: #2b2b2b;
+    border-bottom-width: 0;
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    &.has-events {
+      border-bottom-color: #b38c00;
+    }
+  }
+  &.previous-me {
+    border-top-color: #2b2b2b;
+    border-top-width: 0;
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    &.has-events {
+      border-top-color: #b38c00;
+    }
+  }
+
+  &:hover {
+    background-color: #575757;
+  }
+}
+
+
+
+.container {
+  display: flex;
+}
+
+.sub-container {
+  display: flex;
+  flex-flow: column;
+}
+
+.calendar {
+  display: flex;
+}
+

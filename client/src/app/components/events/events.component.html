@@ -1,0 +1,25 @@
+<div class="events">
+  <div class="event" *ngFor="let event of possibleEvents">
+    <div class="name">{{event.name}}</div>
+    <div class="detail">
+      <div class="players" *ngIf="event.minPlayers">
+        <fa-icon [icon]="faPeopleGroup"></fa-icon>
+        {{event.minPlayers}}</div>
+      <div class="setup" *ngIf="event.roles">
+        <div class="setup-roles">
+          <ng-container *ngFor="let role of asRolesRequirements(event.roles) | keyvalue">
+            <div class="role" *ngIf="role.value > 0">
+              <img [alt]="getRoleName($any(role.key))"
+                   [src]="'assets/images/roles/' + getRoleName($any(role.key)) +'.png'"> {{role.value}}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="valid-events" *ngIf="event.validEvents.length">
+      <ng-container *ngFor="let validEvent of event.validEvents">
+        <app-event class="valid-event" *ngIf="!validEvent.previous" [validEvent]="validEvent" [guild]="guild"></app-event>
+      </ng-container>
+    </div>
+  </div>
+</div>

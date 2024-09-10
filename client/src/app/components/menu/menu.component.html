@@ -1,0 +1,42 @@
+<!--<div *ngIf="calendarService.calendarGuilds$ | async as guilds">-->
+<!--  <div *ngFor="let guild of guilds">-->
+<!--    {{guild.name}}-->
+<!--    <span *ngIf="guild.config">ACTIVE</span>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="bar">
+  <div class="left">
+    <ng-container *ngIf="calendarService.calendarGuilds$ | async as guilds">
+      <app-guild-select *ngIf="guilds && guilds.length" [guilds]="guilds"
+                        [selectedGuild]="calendarService.selectedCalendarGuild$ | async"
+                        (selected)="calendarService.selectGuild($event)">
+      </app-guild-select>
+    </ng-container>
+    <div class="add">
+      <a [href]="addToServerUrl" target="_blank">
+        <fa-icon [icon]="faPlus"></fa-icon>
+        <span>Add to server</span>
+      </a>
+    </div>
+  </div>
+  <div class="center"></div>
+  <div class="user">
+    <div class="info" *ngIf="userService.user$ | async as user">
+      <div class="username"><span>{{nickname$ | async}}</span><span class="id">#{{user.discriminator}}</span></div>
+      <div class="avatar">
+        <img alt="avatar" [src]="userService.avatar$ | async"/>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="login" *ngIf="!authService.isAuthorized" (click)="authService.login()">
+        <div>Login</div>
+        <fa-icon [icon]="faRightFromBracket"></fa-icon>
+      </div>
+      <div class="logout" *ngIf="authService.isAuthorized" (click)="authService.logout()">
+        <fa-icon [icon]="faRightToBracket"></fa-icon>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,88 @@
+:host {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    .info {
+      color: white;
+    }
+    .tooltip {
+      display: flex;
+    }
+  }
+}
+.tooltip {
+  position: absolute;
+  display: none;
+  padding: 8px;
+  transform: translateX(-50%) translateY(-50%);
+  left: 50%;
+  top: 100%;
+  width: max-content;
+  height: max-content;
+  z-index: 3;
+  background-color: #2f3136;
+  box-shadow: 0 0 3px 1px #0000004f;
+}
+
+.info {
+  font-size: 14px;
+  color: inherit;
+  position: relative;
+}
+.roles {
+  display: flex;
+  gap: 8px;
+  flex-flow: row-reverse;
+}
+.role {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 14px;
+  img {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    &.me {
+      border: 1px solid #589100;
+    }
+  }
+}
+
+.selected-role {
+  display: contents;
+  .role {
+    width: 16px;
+    height: 16px;
+  }
+
+  .class, .spec {
+    width: 12px;
+    height: 12px;
+  }
+
+  .class, .spec, .role {
+    border-radius: 50%;
+    z-index: 2;
+  }
+  .class {
+    position: absolute;
+    top: -7px;
+    left: calc(50% + 2px);
+    transform: translateX(-50%);
+  }
+  .spec {
+    position: absolute;
+    top: -7px;
+    left: calc(100% + 1px);
+    transform: translateX(-100%) translateY(0);
+  }
+  .role {
+    position: absolute;
+    top: -8px;
+    left: -1px;
+  }
+}

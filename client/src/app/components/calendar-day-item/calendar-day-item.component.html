@@ -1,0 +1,5 @@
+<div class="day-names">
+  <ng-container *ngFor="let day of config.calendar; index as dayIndex">
+    <div class="day-name" [ngClass]="{current: (calendarService.currentDay$ | async) === dayIndex}">{{dayNames[dayIndex] | slice: 0:3}}</div>
+  </ng-container>
+</div>
